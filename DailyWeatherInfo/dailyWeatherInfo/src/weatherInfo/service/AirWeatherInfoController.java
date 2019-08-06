@@ -23,33 +23,31 @@ public class AirWeatherInfoController {
 	
 	private AirWeatherInfoController() {};
 	
-	// ¸ğµç ´ë±â¿À¿° ¹°Áú Á¤º¸ Ãâ·Â
 	public ArrayList<DayAirPollutionDTO> getAllDayAirPollution() {
 		ArrayList<DayAirPollutionDTO> allDayAirPollution = null;
 		try {
 			allDayAirPollution = service.getAllDayAirPollutionData();
-			SuccessView.selectSuccess("¸ğµç ´ë±â¿À¿°¹°Áú Á¤º¸ Ãâ·Â");
+			SuccessView.selectSuccess("ëª¨ë“  ëŒ€ê¸°ì˜¤ì—¼ë¬¼ì§ˆ ì •ë³´ ì¶œë ¥");
 			EndView.allAirPollutionListView(allDayAirPollution);
 		} catch (SQLException s) {
 			s.printStackTrace();
-			EndView.showError("¸ğµç ´ë±â¿À¿°Á¤º¸ °Ë»ö½Ã ¿¡·¯ ¹ß»ı");
+			EndView.showError("ëª¨ë“  ëŒ€ê¸°ì˜¤ì—¼ì •ë³´ ê²€ìƒ‰ì‹œ ì—ëŸ¬ ë°œìƒ");
 		}
 		return allDayAirPollution;
 	}
 
-	// Æ¯Á¤ ³¯Â¥, Áö¿ª ´ë±â¿À¿° Á¤º¸ Ãâ·Â
 	public DayAirPollutionDTO getDayAirPollution(String date, String location) {
 		DayAirPollutionDTO dayAirPollution = null;
 		try {
 			dayAirPollution = service.getOneDayAirPollutionData(date, location);
-			SuccessView.selectSuccess("³¯Â¥ÀÎ "+ date + "°ú " + location + "Áö¿ªÀÇ ´ë±â¿À¿°¹°ÁúÁ¤º¸");
+			SuccessView.selectSuccess("ë‚ ì§œì¸ "+ date + "ê³¼ " + location + "ì§€ì—­ì˜ ëŒ€ê¸°ì˜¤ì—¼ë¬¼ì§ˆì •ë³´");
 			EndView.aDayAirPollutionView(dayAirPollution);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			EndView.showError("´ë±â¿À¿°Á¤º¸¸¦ ÇØ´ç ÀÏ, Áö¿ªÀ¸·Î ÇØ´ç ´ë±â¿À¿°Á¤º¸ °Ë»ö½Ã ¿À·ù ");
+			EndView.showError("ëŒ€ê¸°ì˜¤ì—¼ì •ë³´ë¥¼ í•´ë‹¹ ì¼, ì§€ì—­ìœ¼ë¡œ í•´ë‹¹ ëŒ€ê¸°ì˜¤ì—¼ì •ë³´ ê²€ìƒ‰ì‹œ ì˜¤ë¥˜ ");
 		}catch (NotExistException e) {
 			e.printStackTrace();
-			EndView.showError("´ë±â¿À¿°Á¤º¸¸¦ ÇØ´ç ÀÏ, Áö¿ªÀ¸·Î ÇØ´ç ´ë±â¿À¿°Á¤º¸ ¾øÀ½ ");
+			EndView.showError("ëŒ€ê¸°ì˜¤ì—¼ì •ë³´ë¥¼ í•´ë‹¹ ì¼, ì§€ì—­ìœ¼ë¡œ í•´ë‹¹ ëŒ€ê¸°ì˜¤ì—¼ì •ë³´ ì—†ìŒ ");
 		}
 		return dayAirPollution;
 	}
@@ -60,11 +58,11 @@ public class AirWeatherInfoController {
 		ArrayList<DayWeatherDTO> allDayWeatherInfo = null;
 		try {
 			allDayWeatherInfo = service.getAllDayWeatherData();
-			SuccessView.selectSuccess("¸ğµç ±â»óÁ¤º¸ Ãâ·Â");
+			SuccessView.selectSuccess("ëª¨ë“  ê¸°ìƒì •ë³´ ì¶œë ¥");
 			EndView.allWeatherListView(allDayWeatherInfo);
 		} catch (SQLException s) {
 			s.printStackTrace();
-			EndView.showError("¸ğµç ³¯¾¾Á¤º¸ °Ë»ö½Ã ¿¡·¯ ¹ß»ı");
+			EndView.showError("ëª¨ë“  ë‚ ì”¨ì •ë³´ ê²€ìƒ‰ì‹œ ì—ëŸ¬ ë°œìƒ");
 		}
 		return allDayWeatherInfo;
 	}
@@ -73,14 +71,14 @@ public class AirWeatherInfoController {
 		DayWeatherDTO dayWeatherInfo = null;
 		try {
 			dayWeatherInfo = service.getOneDayWeatherData(date, location);
-			SuccessView.selectSuccess("³¯Â¥ÀÎ "+ date + "°ú " + location + "Áö¿ªÀÇ ±â»óÁ¤º¸");
+			SuccessView.selectSuccess("ë‚ ì§œì¸ "+ date + "ê³¼ " + location + "ì§€ì—­ì˜ ê¸°ìƒì •ë³´");
 			EndView.aDayWeatherView(dayWeatherInfo);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			EndView.showError("´ë±â¿À¿°Á¤º¸¸¦ ÇØ´ç ÀÏ, Áö¿ªÀ¸·Î ÇØ´ç ´ë±â¿À¿°Á¤º¸ °Ë»ö½Ã ¿À·ù ");
+			EndView.showError("ëŒ€ê¸°ì˜¤ì—¼ì •ë³´ë¥¼ í•´ë‹¹ ì¼, ì§€ì—­ìœ¼ë¡œ ê²€ìƒ‰ì‹œ ì˜¤ë¥˜ ");
 		} catch (NotExistException e) {
 			e.printStackTrace();
-			EndView.showError("ÀÏÀÚ°¡ ¾ø°Å³ª Áö¿ªÀÌ Á¸ÀçÇÏÁö ¾ÊÀ½");
+			EndView.showError("ì¼ìê°€ ì—†ê±°ë‚˜ ì§€ì—­ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŒ");
 		}
 		return dayWeatherInfo;
 	}
@@ -91,14 +89,14 @@ public class AirWeatherInfoController {
 		FineDustGradeDTO result = null;
 		try {
 			result = service.getOneDayFineDustGrade(date, location);
-			SuccessView.selectSuccess("³¯Â¥ÀÎ "+ date + "°ú " + location + "Áö¿ªÀÇ ¹Ì¼¼¸ÕÁö µî±Ş Ãâ·Â");
+			SuccessView.selectSuccess("ë‚ ì§œì¸ "+ date + "ê³¼ " + location + "ì§€ì—­ì˜ ë¯¸ì„¸ë¨¼ì§€ ë“±ê¸‰ ì¶œë ¥");
 			EndView.aFineDustGradeView(result);
 		} catch (SQLException s) {
 			s.printStackTrace();
-			EndView.showError("¹Ì¼¼¸ÕÁö º¸·Á´Ù ½ÇÆĞ");
+			EndView.showError("ë¯¸ì„¸ë¨¼ì§€ì •ë³´ë¥¼ í•´ë‹¹ ì¼, ì§€ì—­ìœ¼ë¡œ ê²€ìƒ‰ì‹œ ì˜¤ë¥˜");
 		}catch (NotExistException s) {
 			s.printStackTrace();
-			EndView.showError("¹Ì¼¼¸ÕÁö º¸·Á´Ù ¾ø³×");
+			EndView.showError("ì¼ìê°€ ì—†ê±°ë‚˜ ì§€ì—­ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŒ.");
 		}
 		return result;
 	}
@@ -107,14 +105,14 @@ public class AirWeatherInfoController {
 		ThiGradeDTO result = null;
 		try {
 			result = service.getOneDayThiGrade(date, stationName);
-			SuccessView.selectSuccess("³¯Â¥ÀÎ "+ date + "°ú " + stationName + "Áö¿ªÀÇ ºÒÄèÁö¼ö µî±Ş Ãâ·Â");
+			SuccessView.selectSuccess("ë‚ ì§œì¸ "+ date + "ê³¼ " + stationName + "ì§€ì—­ì˜ ë¶ˆì¾Œì§€ìˆ˜ ë“±ê¸‰ ì¶œë ¥");
 			EndView.aThiGradeView(result);
 		} catch (SQLException s) {
 			s.printStackTrace();
-			EndView.showError("¸ğµç Àç´É ±âºÎÀÚ °Ë»ö½Ã ¿¡·¯ ¹ß»ı");
+			EndView.showError("ë¯¸ì„¸ë¨¼ì§€ì •ë³´ë¥¼ í•´ë‹¹ ì¼, ì§€ì—­ìœ¼ë¡œ ê²€ìƒ‰ì‹œ ì˜¤ë¥˜");
 		}catch (NotExistException s) {
 			s.printStackTrace();
-			EndView.showError("¹Ì¼¼¸ÕÁö º¸·Á´Ù ¾ø³×");
+			EndView.showError("ì¼ìê°€ ì—†ê±°ë‚˜ ì§€ì—­ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŒ.");
 		}
 		return result;
 	}
